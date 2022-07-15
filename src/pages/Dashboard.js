@@ -15,6 +15,18 @@ const Dashboard = () => {
             timestamp: '2022-06-11T09:42:12+0000'
         },
         {
+            category: 'Q2 2022',
+            color: 'blue',
+            title: 'Buildspace Flow Chain NFT Project',
+            owner: 'Buildspace',
+            avatar: 'https://buildspace.so/_next/image?url=https%3A%2F%2Fcdn.buildspace.so%2Fcourses%2Fflow-nft%2Fposter-normal.png&w=1920&q=75',
+            status: 'Yet to start',
+            priority: 2,
+            progress: 10,
+            description: 'Learn Cadence and build an NFT collection on Flow! This is a short and async weekend project for curious devs that want to get started on Flow.',
+            timestamp: '2022-05-11T19:42:12+0000'
+        },
+        {
             category: 'Q3 2022',
             color: 'blue',
             title: 'Buildspace Flow Chain NFT Project',
@@ -31,11 +43,35 @@ const Dashboard = () => {
     const uniqueCategories = [
         ...new Set(tickets?.map(({category}) => category))
     ]
-    console.log(uniqueCategories);
+
+    const colors = [
+        'rgb(255, 186, 186)',
+        'rgb(255, 223, 186)',
+        'rgb(255, 255, 186)',
+        'rgb(186, 255, 201)',
+        'rgb(186, 255, 255)',
+    ]
+    
     return (
         <div className="dashboard">
             <h1>My Projects</h1>
             <div className="ticket-container">
+                {tickets && uniqueCategories?.map((uniqueCategory, categoryIndex) => (
+                    <div key={categoryIndex}>
+                        <h3>{uniqueCategory}</h3>
+                        {
+                            tickets.filter(ticket => ticket.category === uniqueCategory).map((filteredTicket, ticketIndex) => {
+                                // console.log('dbg1', uniqueCategory, categoryIndex, filteredTicket, ticketIndex, tickets.length)
+                                return (
+                                <TicketCard 
+                                    id={ticketIndex} 
+                                    color={colors[categoryIndex % colors.length]} 
+                                    ticket={filteredTicket}
+                                />
+                            )})
+                        }
+                    </div>
+                ))}
                 <TicketCard />
             </div>
         </div>

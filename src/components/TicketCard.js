@@ -5,16 +5,16 @@ import PriorityDisplay from "./PriorityDisplay"
 import ProgressDisplay from "./ProgressDisplay"
 import DeleteBlock from "./DeleteBlock"
 
-const TicketCard = () => {
-    return (
+const TicketCard = ({id, color, ticket}) => {
+    return ticket && (
         <div className="ticket-card">
-            <Link>
-                <div className="ticket-color"></div>
-                <h3>Title</h3>
-                <AvatarDisplay/>
-                <StatusDisplay/>
-                <PriorityDisplay/>
-                <ProgressDisplay/>
+            <div className="ticket-color" style={{backgroundColor: color}}></div>
+            <Link id="link" to={`/ticket/${ticket.documentId}`}>
+                <h3>{ticket.title}</h3>
+                <AvatarDisplay ticket={ticket}/>
+                <StatusDisplay status={ticket.status}/>
+                <PriorityDisplay priority={ticket.priority}/>
+                <ProgressDisplay progress={ticket.progress}/>
             </Link>
             <DeleteBlock/>
         </div>
