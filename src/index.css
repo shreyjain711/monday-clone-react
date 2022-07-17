@@ -50,6 +50,7 @@ nav .icon {
 .dashboard .ticket-container {
     height: 80vh;
     overflow: scroll;
+    overflow: hidden;
 }
 
 /*---------------Dashboard---------------*/
