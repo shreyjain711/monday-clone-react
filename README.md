@@ -1,5 +1,7 @@
 # Monday Clone w. React.js & Node.js
 
+![screenshot of live app](https://github.com/shreyjain711/monday-clone-react/blob/main/Screenshot%202022-07-18%20123916.jpg)
+
 Frontend deployed using vercel on [https://monday-clone-react.vercel.app/](https://monday-clone-react.vercel.app/) <br>
 Backend deployed using Heroku on [https://monday-clone-react.herokuapp.com/](https://monday-clone-react.herokuapp.com/)
 
