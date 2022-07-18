@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import CategoriesContext from "../context";
 
 const TicketPage = ({ editMode }) => {
+    const localhost = process.env.REACT_APP_LOCALHOST_URL
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         status: 'not started',
@@ -17,7 +18,7 @@ const TicketPage = ({ editMode }) => {
         e.preventDefault()
 
         if(!editMode) {
-            const response = await axios.post('http://localhost:8000/tickets', {
+            const response = await axios.post(`${localhost}/tickets`, {
                 formData
             })
             const success = response.status === 200
@@ -25,7 +26,7 @@ const TicketPage = ({ editMode }) => {
                 navigate('/')
             }
         } else {
-            const response = await axios.put(`http://localhost:8000/tickets/${id}`, {
+            const response = await axios.put(`${localhost}/tickets/${id}`, {
                 data: formData
             })
             if (response.status === 200) navigate('/')
@@ -33,7 +34,7 @@ const TicketPage = ({ editMode }) => {
     }
 
     const fetchData = async () => {
-        const response = await axios.get(`http://localhost:8000/tickets/${id}`)
+        const response = await axios.get(`${localhost}/tickets/${id}`)
         setFormData(response.data.data)
     }
 

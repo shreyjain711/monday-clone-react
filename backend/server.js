@@ -1,5 +1,3 @@
-const PORT = 8000
-
 const express = require('express')
 const cors = require('cors')
 require('dotenv').config()
@@ -9,6 +7,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+const PORT = process.env.PORT || 8000
 const token = process.env.TOKEN
 const url = process.env.ASTRA_URL
 
